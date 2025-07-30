@@ -1,24 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import 'leaflet/dist/leaflet.css';
+import { ThemeProvider } from './ThemeContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Navbar from './UI/Top';
+import AboutMe from './UI/About';
+import ProjectSection from './UI/Projects';
+import ContactSection from './UI/Contact';
+import Footer from './UI/Footer';
+import AdminLogin from './Admin/Adminlogin';
+import AddProject from './Admin/addProject';
+import Hero from './UI/Hero';
+import Top1 from './Admin/adminTop';
+import AdminContact from './Admin/adminContact';
 
 function App() {
+  const [projects, setProjects] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+
+  const handleProjectAdded = (newProject) => {
+    setProjects((prev) => [...prev, newProject]); // Update state when new project added
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Router>
+        
+        <Routes>
+          {/* Normal User Route */}
+          <Route
+            path="/"
+            element={
+              <>
+              <Navbar />
+                <Hero/>
+                <AboutMe />
+                <ProjectSection projects={projects} />
+                <ContactSection />
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Admin Panel Route */}
+          <Route
+            path="/admin"
+            element={
+              
+              isLoggedIn ? (
+                <>
+              <Top1/>
+                <AddProject onProjectAdded={handleProjectAdded} />
+                <AdminContact/>
+               </>
+               ) : (
+                <AdminLogin onLoginSuccess={() => setIsLoggedIn(true)} />
+             
+              )
+            }
+            
+          />
+        </Routes>
+        
+      </Router>
+    </ThemeProvider>
   );
 }
 
