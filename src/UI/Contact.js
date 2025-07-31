@@ -15,7 +15,7 @@ const Contact = () => {
     setLoading(true);
     setStatus("");
     try {
-      await axios.post("https://my-portfolio-backend-1-db8u.onrender.com/api/messages", form);
+      await axios.post("https://my-portfolio-backend-1-db8u.onrender.com/api/contact", form);
       setStatus("✅ Message sent successfully!");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
