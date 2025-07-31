@@ -22,18 +22,18 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="flex flex-col space-y-2 md:col-span-1">
           <h3 className="font-semibold text-lg mb-2">Contact</h3>
-          <p>Email: <a href="mailto:mohit@example.com" className="hover:text-blue-500 transition">mohit@example.com</a></p>
-          <p>Phone: <a href="tel:+9779812345678" className="hover:text-blue-500 transition">+977 9846277496</a></p>
+          <p>Email: <a href="mailto:mohitbudhamagar8@gmail.com" className="hover:text-blue-500 transition">mohitbudhamagar8@gmail.com</a></p>
+          <p>Phone: <a href="tel:+9779846277496" className="hover:text-blue-500 transition">+977 9846277496</a></p>
         </div>
 
         {/* Social Media */}
         <div className="flex flex-col space-y-4 md:col-span-1">
           <h3 className="font-semibold text-lg mb-2">Follow Me</h3>
           <div className="flex gap-6 text-lg">
-            <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://www.facebook.com/mohita.buda.magara" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition" aria-label="Facebook"><FaFacebookF /></a>
             <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-gray-100 transition" aria-label="GitHub"><FaGithub /></a>
-            <a href="mailto:mohit@example.com" className="hover:text-red-500 transition" aria-label="Email"><FaEnvelope /></a>
+            <a href="https://github.com/mohitbudha" target="_blank" rel="noopener noreferrer" className="hover:text-gray-100 transition" aria-label="GitHub"><FaGithub /></a>
+            <a href="mailto:mohitbudhamagar8@gmail.com" className="hover:text-red-500 transition" aria-label="Email"><FaEnvelope /></a>
           </div>
         </div>
 
