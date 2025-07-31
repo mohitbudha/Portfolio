@@ -25,7 +25,7 @@ const AdminContact = () => {
   // Handle delete
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/contact/${id}`, {
+      await fetch(`https://my-portfolio-backend-1-db8u.onrender.com/api/contact/${id}`, {
         method: "DELETE",
       });
       setContacts((prev) => prev.filter((c) => c._id !== id));
