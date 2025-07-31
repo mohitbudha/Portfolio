@@ -10,7 +10,7 @@ const AdminContact = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/contact");
+        const res = await fetch("https://my-portfolio-backend-1-db8u.onrender.com/api/messages");
         const data = await res.json();
         setContacts(data);
         setLoading(false);
