@@ -5,12 +5,15 @@ import { useInView } from "react-intersection-observer";
 
 const ProjectSection = () => {
   const [projects, setProjects] = useState([]);
+  const [visibleProjects, setVisibleProjects] = useState(6); // initially show 6
   const { ref, inView } = useInView({ threshold: 0.2 });
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get("https://my-portfolio-backend-1-db8u.onrender.com/api/projects");
+        const res = await axios.get(
+          "https://my-portfolio-backend-1-db8u.onrender.com/api/projects"
+        );
         setProjects(res.data);
       } catch (err) {
         console.error("Error fetching projects:", err);
@@ -34,7 +37,7 @@ const ProjectSection = () => {
       scale: 1,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-    exit: { opacity: 0, y: 100, transition: { duration: 0.6 } }, // When going out
+    exit: { opacity: 0, y: 100, transition: { duration: 0.6 } },
   };
 
   return (
@@ -43,6 +46,7 @@ const ProjectSection = () => {
       ref={ref}
       className="px-6 md:px-16 py-16 md:py-24 bg-white dark:bg-gray-900 text-gray-800 dark:text-white"
     >
+      {/* Heading */}
       <motion.h2
         className="text-4xl font-bold text-center mb-12"
         initial={{ opacity: 0, y: 50 }}
@@ -52,6 +56,7 @@ const ProjectSection = () => {
         My <span className="text-blue-500">Projects</span>
       </motion.h2>
 
+      {/* Projects Grid */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={containerVariants}
@@ -59,7 +64,7 @@ const ProjectSection = () => {
         animate={inView ? "visible" : "hidden"}
       >
         {projects.length > 0 ? (
-          projects.map((project, index) => (
+          projects.slice(0, visibleProjects).map((project, index) => (
             <motion.div
               key={index}
               className="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl"
@@ -100,6 +105,18 @@ const ProjectSection = () => {
           <p className="text-center text-gray-500">No projects available.</p>
         )}
       </motion.div>
+
+      {/* Load More Button */}
+      {visibleProjects < projects.length && (
+        <div className="text-center mt-10">
+          <button
+            onClick={() => setVisibleProjects(visibleProjects + 3)}
+            className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </section>
   );
 };

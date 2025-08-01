@@ -66,7 +66,7 @@ const Contact = () => {
         <div>
           <h3 className="text-3xl font-semibold text-center  mb-6 text-blue-500">Message</h3>
           {status && (
-            <p className={`text-center mb-4 font-semibold ${status.includes("✅") ? "text-green-600" : "text-red-600"}`}>
+            <p className={`text-center mb-4 font-semibold ${status.includes("✔") ? "text-green-600" : "text-red-600"}`}>
               {status}
             </p>
           )}
@@ -93,7 +93,7 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Your Message/Feedback"
+              placeholder="Your Message/Feedback "
               className="w-full p-3 border rounded h-28 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300 bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
               required
             />
@@ -104,7 +104,7 @@ const Contact = () => {
                 loading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
               } transition duration-300 transform hover:scale-105`}
             >
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? "Sending..." : "Send Message "}
             </button>
           </form>
         </div>

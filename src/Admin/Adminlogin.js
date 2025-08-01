@@ -14,6 +14,8 @@ const AdminLogin = ({ onLoginSuccess }) => {
         { username, password }
       );
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
       onLoginSuccess();
     } catch (err) {
       setError("Invalid Credentials!");

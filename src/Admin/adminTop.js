@@ -5,6 +5,11 @@ import { Sun, Moon, Menu, X } from 'lucide-react';
 const Top1 = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
+  
+    const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/admin"; // Redirect to login page after logout
+  };
 
   // Disable body scroll when menu is open
   useEffect(() => {
@@ -33,6 +38,7 @@ const Top1 = () => {
         </div>
 
         {/* Desktop Nav Links */}
+        {/* 
         <ul className="hidden md:flex gap-8 text-lg font-medium">
  
   
@@ -47,10 +53,14 @@ const Top1 = () => {
     </a>
   </li>
 </ul>
-
+*/}
 
         {/* Right Section */}
         <div className="flex items-center gap-4">
+          <button className='text-gray-800 dark:text-white font-medium rounded hover:bg-gray-200 dark:hover:bg-gray-700 p-1'
+          onClick={handleLogout}>
+            Logout
+          </button>
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}

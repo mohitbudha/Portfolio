@@ -13,8 +13,7 @@ const AdminPanel = () => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
-      await axios.post(
-        "https://my-portfolio-backend-1-db8u.onrender.com/api/projects",
+      await axios.post("https://my-portfolio-backend-1-db8u.onrender.com/api/projects",
         {
           title,
           description,
@@ -28,7 +27,7 @@ const AdminPanel = () => {
           },
         }
       );
-      setMessage("✅ Project Added Successfully!");
+      setMessage("✔ Project Added Successfully!");
     } catch (err) {
       setMessage("❌ Error adding project");
     }
